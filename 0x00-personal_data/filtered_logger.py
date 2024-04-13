@@ -4,12 +4,15 @@
 This is a filtered logger module
 """
 
-import re
 import logging
+import re
+
+
+PII_FIELDS = ('name', 'email', 'phone', 'ssn', 'password')
 
 
 def filter_datum(fields: list[str], redaction: str, message: str,
-                 separator: str) -> str:
+                 separator: str = ',') -> str:
     """
     This function filters the data.
 
@@ -30,6 +33,6 @@ def filter_datum(fields: list[str], redaction: str, message: str,
         str: The filtered log message with specified fields obfuscated.
     """
     for field in fields:
-        message = re.sub(field+'=.*?'+separator,
-                         field+'='+redaction+separator, message)
+        message = re.sub(r'(?<=' + separator + field + '=)([^' +
+                         separator + ']+)', redaction, message)
     return message
