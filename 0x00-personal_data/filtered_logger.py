@@ -4,11 +4,7 @@
 This is a filtered logger module
 """
 
-import logging
 import re
-
-
-logger = logging.getLogger(__name__)
 
 
 def filter_datum(fields: list[str], redaction: str, message: str,
