@@ -8,7 +8,7 @@ import re
 
 
 def filter_datum(fields: list[str], redaction: str, message: str,
-                 separator: str = ',') -> str:
+                 separator: str = str) -> str:
     """
     This function filters the data.
 
