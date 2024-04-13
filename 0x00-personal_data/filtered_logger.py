@@ -5,6 +5,7 @@ This is a filtered logger module
 """
 
 import re
+import logging
 
 
 def filter_datum(fields: list[str], redaction: str, message: str,
