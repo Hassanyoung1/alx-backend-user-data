@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 """
-Authentication helper class for handling authorization headers and user authentication.
+Authentication helper class for handling
+authorization headers and user authentication.
 """
 
 
