@@ -59,6 +59,10 @@ class Auth:
         if 'Authorization' not in request.headers:
             return None
         return request.headers['Authorization']
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/monty
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
