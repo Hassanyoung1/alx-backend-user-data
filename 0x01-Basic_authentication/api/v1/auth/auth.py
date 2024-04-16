@@ -41,6 +41,13 @@ class Auth:
             if path == excluded_path:
                 return False
 
+            if '*' in excluded_path:
+                wildcard_index = excluded_path.index('*')
+                if path.startswith(excluded_path[:wildcard_index]):
+                    return False
+
+            elif path == excluded_path:
+                return False
         return True
 
     def authorization_header(self, request=None) -> str:
