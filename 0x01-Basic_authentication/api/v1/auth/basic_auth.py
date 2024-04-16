@@ -9,6 +9,7 @@ import os
 from typing import TypeVar
 from models.user import User
 
+
 class BasicAuth(Auth):
     """Basic authentication class."""
 
