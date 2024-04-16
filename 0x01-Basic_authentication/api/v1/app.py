@@ -64,5 +64,5 @@ def forbidden(error) -> str:
 
 if __name__ == "__main__":
     host = getenv("API_HOST", "0.0.0.0")
-    port = getenv("API_PORT", "5014")
+    port = getenv("API_PORT", "5015")
     app.run(host=host, port=port)
