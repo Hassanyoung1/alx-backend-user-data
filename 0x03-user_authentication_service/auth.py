@@ -1,4 +1,8 @@
 #!/usr/bin/env python3
+"""
+efine a _hash_password method that takes
+in a password string arguments and returns bytes.
+"""
 
 import bcrypt
 from db import DB
