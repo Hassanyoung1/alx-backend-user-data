@@ -3,25 +3,17 @@
 flask app
 """
 
-from flask import (
-    Flask,
-    request,
-    jsonify,
-    redirect,
-    url_for,
-    abort
-)
-
+from flask import Flask, request, jsonify
 from auth import Auth
 
 app = Flask(__name__)
 AUTH = Auth()
 
-
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index() -> str:
     """
-    index route
+    Return json respomse
+    {"message": "Bienvenue"}
     """
     return jsonify({"message": "Bienvenue"})
 
