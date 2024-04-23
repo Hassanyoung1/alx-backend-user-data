@@ -13,7 +13,14 @@ class User(Base):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
+<<<<<<< HEAD
     email = Column(String(250), nullable=False)
     hashed_password = Column(String(250), nullable=False)
     session_token = Column(String(250), nullable=True)
     reset_token = Column(String(250), nullable=True)
+=======
+    email = Column(String, nullable=False)
+    hashed_password = Column(String(250), nullable=False)
+    session_token = Column(String(250), nullable=True)
+    reset_token = Column(String(250250250250250250250250250250250250250250250250250250250250250250250250250250), nullable=True)
+>>>>>>> origin/monty
