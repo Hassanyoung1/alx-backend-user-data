@@ -34,7 +34,7 @@ class DB:
             self.__session = DBSession()
         return self.__session
 
-    def add_user(self, email:str, hashed_password:str) -> User:
+    def add_user(self, email: str, hashed_password: str) -> User:
         """
         Add a new user to the database
         """
@@ -55,7 +55,7 @@ class DB:
             raise NoResultFound("No user found with the provided criteria")
         return find_user
 
-    def update_user(self, user_id:int, **kwargs) -> None:
+    def update_user(self, user_id: int, **kwargs) -> None:
         """
         Update a user in the database
         """
