@@ -24,6 +24,12 @@ elif AUTH_TYPE == 'basic_auth':
 elif AUTH_TYPE == 'session_auth':
     from api.v1.auth.session_auth import SessionAuth
     auth = SessionAuth()
+elif AUTH_TYPE == 'session_exp_auth':
+    from api.v1.auth.session_exp_auth import SessionExpAuth
+    auth = SessionExpAuth()
+elif AUTH_TYPE == 'session_db_auth':
+    from api.v1.auth.session_db_auth import SessionDBAuth
+    auth = SessionDBAuth()
 
 
 @app.before_request
@@ -34,10 +40,13 @@ def before_request():
         return
     excluded_paths = ['/api/v1/status/',
                       '/api/v1/unauthorized/',
-                      '/api/v1/forbidden/']
+                      '/api/v1/forbidden/',
+                      '/api/v1/auth_session/login/']
     if request.path not in excluded_paths:
         if auth.require_auth(request.path, excluded_paths):
-            if auth.authorization_header(request) is None:
+            auth_header = auth.authorization_header(request)
+            session_cookie = auth.session_cookie(request)
+            if auth_header is None and session_cookie is None:
                 abort(401)
             if auth.current_user(request) is None:
                 abort(403)

@@ -3,6 +3,8 @@
 
 from .auth import Auth
 import uuid
+from models.user import User
+import base64
 
 
 class SessionAuth(Auth):
@@ -26,3 +28,22 @@ class SessionAuth(Auth):
         if not isinstance(session_id, str):
             return None
         return self.user_id_by_session_id.get(session_id)
+
+    def current_user(self, request=None):
+        """current user"""
+        session_id = self.session_cookie(request)
+        user_id = self.user_id_for_session_id(session_id)
+        return User.get(user_id)
+
+    def destroy_session(self, request=None):
+        """Delete session"""
+        if request is None:
+            return False
+        session_cookie = self.session_cookie(request)
+        if session_cookie is None:
+            return False
+        user_id = self.user_id_for_session_id(session_cookie)
+        if user_id is None:
+            return False
+        del self.user_id_by_session_id[session_cookie]
+        return True
