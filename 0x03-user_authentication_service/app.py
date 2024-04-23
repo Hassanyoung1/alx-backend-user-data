@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET"], strict_slashes=False)
-def index():
+def index() -> str:
     """
     index route
     """
@@ -22,7 +22,6 @@ def index():
 
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
-
 def userse(email: str, password: str):
     """
     user route
