@@ -15,8 +15,7 @@ def index() -> str:
     """
     index route
     """
-    message = {"message": "Bienvenue"}
-    return jsonify(message)
+    return jsonify({"message": "Bienvenue"})
 
 
 @app.route("/users", methods=["POST"], strict_slashes=False)
