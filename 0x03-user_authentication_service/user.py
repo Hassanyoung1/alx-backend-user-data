@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """User model for SQLAlchemy."""
 
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String
 
 Base = declarative_base()
@@ -16,4 +16,4 @@ class User(Base):
     email = Column(String, nullable=False)
     hashed_password = Column(String(250), nullable=False)
     session_token = Column(String(250), nullable=True)
-    reset_token = Column(String(250), nullable=True)
+    reset_token = Column(String(250250250250250250250250250250250250250250250250250250250250250250250250250250), nullable=True)
